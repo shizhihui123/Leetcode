@@ -1,5 +1,6 @@
 package problem32;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -7,30 +8,50 @@ import java.util.Stack;
  */
 public class Solution {
     public static int longestValidParentheses(String s) {
-        Stack stack = new Stack();
+        Stack<LeftParenthesis> stack = new Stack();
 
         char[] arrays = s.toCharArray();
         int index = 0;
         int num = 0;
         int max = 0;
         int length = arrays.length;
+        boolean[] mark = new boolean[length];
 
-        while(index < length){
-            if(arrays[index] == ')'){
-                index++;
-                if(!stack.isEmpty() && (char)stack.pop() == '(' ){
-                    num++;
-                    if(num > max){
-                        max = num;
-                    }
+        while (index < length) {
+            if (arrays[index] == ')') {
+                if (!stack.isEmpty()) {
+                    mark[index] = true;
+                    mark[stack.pop().index] = true;
                 }
-                else
-                    num = 0;
-            }
-            else{
-                stack.push(arrays[index++]);
+                index++;
+            } else {
+                stack.push(new LeftParenthesis(index++));
             }
         }
-        return max * 2;
+
+        for (int i = 0; i < length; i++) {
+            if (mark[i] == true) {
+                num++;
+                if (num > max)
+                    max = num;
+            } else
+                num = 0;
+        }
+
+        return max ;
+    }
+
+    public static void main(String args[]) {
+        String str = "";
+        int ret = longestValidParentheses(str);
+        System.out.println(ret);
+    }
+}
+
+class LeftParenthesis {
+    int index;
+
+    LeftParenthesis(int index) {
+        this.index = index;
     }
 }
