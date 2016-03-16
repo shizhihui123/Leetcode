@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 public class Solution {
     public static int longestValidParentheses(String s) {
-        Stack<LeftParenthesis> stack = new Stack();
+        Stack<Integer> stack = new Stack();
 
         char[] arrays = s.toCharArray();
         int index = 0;
@@ -21,11 +21,11 @@ public class Solution {
             if (arrays[index] == ')') {
                 if (!stack.isEmpty()) {
                     mark[index] = true;
-                    mark[stack.pop().index] = true;
+                    mark[stack.pop()] = true;
                 }
                 index++;
             } else {
-                stack.push(new LeftParenthesis(index++));
+                stack.push(index++);
             }
         }
 
@@ -38,20 +38,12 @@ public class Solution {
                 num = 0;
         }
 
-        return max ;
+        return max;
     }
 
     public static void main(String args[]) {
         String str = "";
         int ret = longestValidParentheses(str);
         System.out.println(ret);
-    }
-}
-
-class LeftParenthesis {
-    int index;
-
-    LeftParenthesis(int index) {
-        this.index = index;
     }
 }
