@@ -4,7 +4,8 @@ import java.util.Iterator;
 import java.util.Stack;
 
 /**
- * Created by c0de8ug on 16-3-16.
+ *< <
+ * Time Complexity : O(N)
  */
 public class Solution {
     public static int longestValidParentheses(String s) {
@@ -45,5 +46,6 @@ public class Solution {
         String str = "";
         int ret = longestValidParentheses(str);
         System.out.println(ret);
+
     }
 }
