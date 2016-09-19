@@ -5,20 +5,18 @@ package problem371;
  */
 public class Solution {
   public static void main(String args[]) {
-    System.out.println(getSum(2, -1));
+    System.out.println(getSum(-1, 1));
   }
 
   public static int getSum(int a, int b) {
 
-    int c = -3;
-    int cc = 4;
-
     int temp1 = a ^ b;
     int temp2 = a & b;
     temp2 = temp2 << 1;
-    while ((temp1 & temp2) > 0) {
+    while ((temp1 & temp2) != 0) {
+      int temp3 = temp1;
       temp1 = temp1 ^ temp2;
-      temp2 = temp1 & temp2;
+      temp2 = temp2 & temp3;
       temp2 = temp2 << 1;
     }
     return temp1 | temp2;
