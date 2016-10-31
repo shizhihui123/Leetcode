@@ -8,7 +8,7 @@ import java.util.Stack;
 public class Solution {
     public static void main(String args[]) {
         String a = "fabcd";
-        String b = "fffffffffffffffffffffffffffsdasfadsfdasfdsfdasfdasfdfagdfgdfgdfsgdfgdfshfshrwgrfvdfbggfshgfshdfsgrewffewfdgdfsgregrqefdaefqewrfewfeabfffgddddddddddddddddddddddddddddddddasdsadcd";
+        String b = "fa  bcd";
         System.out.println(findTheDifference(a, b));
     }
 
